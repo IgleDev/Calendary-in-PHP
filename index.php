@@ -2,7 +2,7 @@
 	$month = date('m');
 	$year = date('Y');
 	$monthDays = cal_days_in_month(CAL_GREGORIAN,$month,$year);
-	$date = strtotime($year . ' ' . $month - '-01');
+	$date = strtotime($year . ' ' . $month  - '1');
 	$firstWeekDay = date('w', $date);
 ?>
 <!DOCTYPE html>
@@ -28,7 +28,7 @@
 				<th>Saturday</th>
 			</tr>
 			<?php
-				for($i = 1; $i <= $firstWeekDay;$i++){
+				for($i = 1; $i < $firstWeekDay;$i++){
 					echo '<td></td>';
 				}
 
@@ -36,9 +36,9 @@
 
 				for($i = 1; $i <= $monthDays;$i++){
 					echo '<td>' . $i . '</td>';
-					if($dayCount === 6){
+					if($dayCount === 7){
 						echo '</tr>';
-						$dayCount = 0;
+						$dayCount = 1;
 					}else{
 						$dayCount++;
 					}
